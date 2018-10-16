@@ -1,12 +1,13 @@
 import nltk
 import csv
-#nltk.download()
+
+
 nltk.download('stopwords')
 nltk.download('rslp')
 base = []
 basetreinamento = []
 baseteste = []
-
+#ler as bases
 with open("base.csv") as arquivocsv:
     ler = csv.reader(arquivocsv, delimiter=",")
     for linha in ler:
@@ -24,7 +25,9 @@ with open("base_teste.csv") as arquivocsv:
 
 
 stopWordsNLTK = nltk.corpus.stopwords.words('portuguese')
-#print(stopWordsNLTK)
+#as palavras são em português
+##print(stopWordsNLTK)
+#stopWordsNLTK= termops que não tem relevancia
 
 #Deixa apenas o radical e remove stopwords 
 def aplicastemmer(texto):
@@ -89,6 +92,7 @@ basecompletaTESTE = nltk.classify.apply_features(extratorpalavras, frasesComStem
 
 classificador = nltk.NaiveBayesClassifier.train(basecompleta)
 #print(classificador.labels())
+#mostra todos os sentimentos que ele conseguiu aprender
 
 #Palavras mais determinantes
 #print(classificador.show_most_informative_features(10))
@@ -112,6 +116,8 @@ print(matriz)
 
 '''______________TESTANDO FRASE ____________'''
 teste = 'Triste época! É mais fácil desintegrar um átomo do que um preconceito' #Albert Einstein
+#teste = 'Ta sic está sendo ótima' #Albert Einstein
+
 testestemming = []
 stemmer = nltk.stem.RSLPStemmer()
 
