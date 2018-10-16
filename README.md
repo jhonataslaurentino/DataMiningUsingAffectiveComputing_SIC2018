@@ -1,1 +1,1 @@
-# DataMining_SIC2018
+# DataMiningUsingAffectiveComputing_SIC2018
